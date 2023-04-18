@@ -1,0 +1,42 @@
+﻿@using MvcStok.Models.Entity
+@model List<tblurunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Ürünler</h2>
+@using (Html.BeginForm("Index", "Urunler", FormMethod.Get))
+{
+    @Html.TextBox("p", null, new { type = "text", @class = "form-control mt-3", placeholder = "Aramak istediğiniz ürünü yazınız..." })
+    <button type="submit" class="btn btn-outline-primary mt-1">Ara</button>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>ÜRÜN ADI</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYAT</th>
+        <th>SATIŞ FİYAT</th>
+        <th>KATEGORİ</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.id</td>
+            <td>@x.ad</td>
+            <td>@x.marka</td>
+            <td>@x.stok</td>
+            <td>@x.alisfiyat</td>
+            <td>@x.satisfiyat</td>
+            <td>@x.tblkategori.ad</td>
+            <td><a href="/Urunler/UrunSil/@x.id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Urunler/UrunGetir/@x.id" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Urunler/YeniUrun/" class="btn btn-primary">Yeni Ürün Ekle</a>
+

@@ -1,0 +1,25 @@
+﻿@model MvcStok.Models.Entity.tblpersonel
+@{
+    ViewBag.Title = "YeniPersonel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Personel Ekleme</h2>
+
+<br />
+<form method="post">
+    @Html.LabelFor(x => x.ad, "Personel Adı")
+    @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ad, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.soyad, "Personel Soyadı")
+    @Html.TextBoxFor(x => x.soyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.soyad, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.departman, "Departman")
+    @Html.TextBoxFor(x => x.departman, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.departman, "", new { @style = "color:red" })
+    <br />
+    <button type="submit" class="btn btn-info">Yeni Personel Ekle</button>
+
+</form>
